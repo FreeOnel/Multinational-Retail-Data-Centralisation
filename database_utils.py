@@ -35,4 +35,4 @@ class DatabaseConnector:
 
     def upload_to_db(self, df: pd.DataFrame, table_name):
         df.to_sql(table_name, con=self.engine, if_exists='replace', index=False)
-        print("Uploaded to table successfully.")
+        print(f"Uploaded to table {table_name} successfully.")
