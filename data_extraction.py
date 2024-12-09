@@ -31,7 +31,7 @@ class DataExtractor:
         
     def retrieve_stores_data(self, store_endpoint):
         if not self.number_of_stores or not self.headers:
-            print("Please use list_number_of_stories first")
+            print("Please use list_number_of_stores first")
             return
                 
         stores_data = []

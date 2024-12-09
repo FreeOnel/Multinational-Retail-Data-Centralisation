@@ -23,7 +23,8 @@ class DataCleaning:
         - **Convert "date_payment_confirmed" column into a datetime data type**
         '''
         df.replace("NULL", pd.NA, inplace=True)
-        df['card_number'] = pd.to_numeric(df['card_number'], errors='ignore')
+        df['card_number'] = df['card_number'].astype(str).str.extract('(\d+)')[0]
+        # df['card_number'] = pd.to_numeric(df['card_number'], errors='ignore') # ????????
         df.drop_duplicates(subset='card_number', inplace=True)
         df['date_payment_confirmed'] = pd.to_datetime(df['date_payment_confirmed'], format='mixed', errors='coerce')
         df.dropna(inplace=True)
@@ -38,10 +39,10 @@ class DataCleaning:
         - **Strip away symbols, letters, and white spaces from "staff_numbers" column**
         '''
         df.drop(columns='lat', inplace=True) # contains mostly 'None'
+        df.loc[0, 'latitude'] = "N/A" # sets latitude of 0th row to NA otherwise it will be dropped (needed in future task)
         df.replace("NULL", pd.NA, inplace=True)
         df['opening_date'] = pd.to_datetime(df['opening_date'], format='mixed', errors='coerce')
         df['staff_numbers'] = df['staff_numbers'].astype(str).str.replace(r'\D', '', regex=True)
-        # df['staff_numbers'] = pd.to_numeric(df['staff_numbers'], errors='raise')
         df.dropna(inplace=True)
         print(df)
 
@@ -92,7 +93,7 @@ class DataCleaning:
         '''
         - **Remove unwanted columns**
         '''
-        df.drop(columns=['first_name','last_name', '1'])
+        df.drop(columns=['first_name','last_name', '1'], inplace=True)
         
         return df
 

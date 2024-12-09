@@ -24,7 +24,7 @@ def extract_and_clean_store_details():
     print(f"Number of stores to retrieve: {store_count}")
     stores_df = extractor.retrieve_stores_data(store_endpoint)
     cleaned_store_data = cleaner.clean_store_data(stores_df)
-    check_value(cleaned_store_data, expected_value=440, label='store') # Should be 441 but checking what is different
+    check_value(cleaned_store_data, expected_value=441, label='store') 
     output_connector.upload_to_db(cleaned_store_data, output_store_table_name)
 
 def extract_and_clean_product_details():
@@ -76,9 +76,9 @@ if __name__ == '__main__':
     # input_connector.list_db_tables()
     # extract_and_clean_user_data()
     # extract_and_clean_card_data()
-    # extract_and_clean_store_details()
+    extract_and_clean_store_details()
     # extract_and_clean_product_details()
     # extract_and_clean_order_data()
-    extract_and_clean_date_event_data()
+    # extract_and_clean_date_event_data()
 
 
