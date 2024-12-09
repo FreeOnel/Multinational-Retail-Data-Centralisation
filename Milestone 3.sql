@@ -8,9 +8,9 @@ SELECT MAX(LENGTH(product_code)) AS max_length_product FROM orders_table;
 ALTER TABLE orders_table
     ALTER COLUMN date_uuid TYPE UUID USING date_uuid::UUID,
     ALTER COLUMN user_uuid TYPE UUID USING user_uuid::UUID,
-    ALTER COLUMN card_number TYPE VARCHAR(19), -- Replace 16 with the actual max length
-    ALTER COLUMN store_code TYPE VARCHAR(12),  -- Replace 8 with the actual max length
-    ALTER COLUMN product_code TYPE VARCHAR(11), -- Replace 12 with the actual max length
+    ALTER COLUMN card_number TYPE VARCHAR(19), 
+    ALTER COLUMN store_code TYPE VARCHAR(12),  
+    ALTER COLUMN product_code TYPE VARCHAR(11), 
     ALTER COLUMN product_quantity TYPE SMALLINT;
 
 -- Task 2
@@ -44,11 +44,11 @@ FROM dim_store_details;
 
 ALTER TABLE dim_store_details
     ALTER COLUMN locality TYPE VARCHAR(255),
-    ALTER COLUMN store_code TYPE VARCHAR(12), -- Replace 10 with actual max length
+    ALTER COLUMN store_code TYPE VARCHAR(12), 
     ALTER COLUMN staff_numbers TYPE SMALLINT USING staff_numbers::SMALLINT,
     ALTER COLUMN opening_date TYPE DATE USING opening_date::DATE,
     ALTER COLUMN store_type TYPE VARCHAR(255),
-    ALTER COLUMN country_code TYPE VARCHAR(2), -- Replace 3 with actual max length
+    ALTER COLUMN country_code TYPE VARCHAR(2), 
     ALTER COLUMN continent TYPE VARCHAR(255);
 
 
